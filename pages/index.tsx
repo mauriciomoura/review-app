@@ -23,7 +23,7 @@ export default function Home() {
 
         <div className={styles.grid}>
           <a href="https://garrulous-hero-1f4.notion.site/Projeto-C-os-Dev-Aprendiz-265d9164a0704b85a365b8826ac56116" className={styles.card}>
-            <h2>Documentaçãoc &rarr;</h2>
+            <h2>Documentação &rarr;</h2>
             <p>Base de conhecimento do projeto.</p>
           </a>
 
