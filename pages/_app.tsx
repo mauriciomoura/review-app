@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 import '../styles/styles.css'
+import Link from 'next/link'
 import { Fragment } from "react"
 
 function MyApp({ Component, pageProps }) {
@@ -9,17 +10,23 @@ function MyApp({ Component, pageProps }) {
         <nav>
           <ul className="flex justify-between items-center p-8 bg-blue-100">
             <li>
-              <a href="/" className="text-blue-500 no-underline">
-                Home
-              </a>
+              <Link href="/">
+                <a className="text-blue-500 no-underline">
+                  Home
+                </a>
+              </Link>
 
-              <a href="/about" className="text-blue-500 no-underline p-8">
+              <Link href="/about"> 
+              <a className="text-blue-500 no-underline p-8">
                 About
               </a>
+              </Link>
 
-              <a href="/blog" className="text-blue-500 no-underline">
-                Blog
-              </a>
+              <Link href="/blog"> 
+                <a className="text-blue-500 no-underline">
+                  Blog
+                </a>  
+              </Link>
             </li>
           </ul>
         </nav>

@@ -6,36 +6,31 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     query: { id }
   } = req;
   if (req.method === "DELETE") {
-    
-    console.log(`http://localhost:8081/api/reviews/${id}`);
 
-    const response = await fetch(`http://localhost:8081/api/reviews/${id}`, {
+    const response = await fetch(`${process.env.REVIEW_API_URL}/${id}`, {
         method: "DELETE",
         headers: {
         "Content-Type": "application/json"
         }
     });
 
-    //await response.json();
-
     return res.status(200).json({ status: "Success" });
   } else if (req.method === "PUT") {
     const data = req.body as EditReviewFormData;
 
-    console.log(`data.title: ` + data.title);
-    console.log(`data.description: ` + data.description);
-
-    const response = await fetch(`http://localhost:8081/api/reviews/${id}`, {
+    const response = await fetch(`${process.env.REVIEW_API_URL}/${id}`, {
         method: "PUT",
         headers: {
         "Content-Type": "application/json"
         },
         body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
     });
 
-    const review = await response.json();
-
-    return res.status(200).json({ status: "Success", review });
+    return res.status(200).json({ status: "Success", data });
   }
 
   return res.status(405).json({ msg: "Method not implemented" });
