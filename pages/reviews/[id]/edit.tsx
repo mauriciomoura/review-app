@@ -34,7 +34,6 @@ async function sendData(id: number, data: EditReviewFormData) {
 export default function EditReviewPage({
   review
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  //const reviewObj = JSON.parse(review) as Review;
   const router = useRouter();
   function handleSubmit(data: EditReviewFormData) {
     try {
