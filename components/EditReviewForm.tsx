@@ -1,4 +1,5 @@
 import { useState, FormEvent } from "react";
+import ReactStars from "react-rating-stars-component";
 
 export type EditReviewFormData = {
   title: string;
@@ -21,6 +22,12 @@ const EditReviewForm: React.FC<Props> = ({ onSubmit, review, reset }) => {
     setRating(0);
     setDescription("");
   }
+
+  const ratingChanged = (newRating) => {
+    console.log(newRating*2);
+    setRating(newRating*2);
+  };
+
   function isValid(data: EditReviewFormData): boolean {
     return data.description !== "" && data.title !== "" && data.rating >= 0 && data.rating <= 10;
   }
@@ -52,34 +59,18 @@ const EditReviewForm: React.FC<Props> = ({ onSubmit, review, reset }) => {
           required
         />
       </div>
-      <div className="mb-4">
-        <label
-          className="block text-gray-700 text-sm font-bold mb-2"
-          htmlFor="title"
-        >
-          Nota
-        </label>
-        <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          id="rating"
-          type="text"
-          placeholder="Sua Nota"
-          value={rating}
-          onChange={e => setRating(e.target.value)}
-          required
+      
+      <div className="flex justify-center">
+        <ReactStars
+          count={5}
+          value={review.rating/2}
+          isHalf={true}
+          onChange={ratingChanged}
+          size={24}
+          edit={true}
+          activeColor="#ffd700"
         />
       </div>
-
-      <div className="flex justify-center items-center">
-        <div className="flex items-center mt-2 mb-4">
-          <svg className="mx-1 w-4 h-4 fill-current text-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-          <svg className="mx-1 w-4 h-4 fill-current text-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-          <svg className="mx-1 w-4 h-4 fill-current text-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-          <svg className="mx-1 w-4 h-4 fill-current text-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-          <svg className="mx-1 w-4 h-4 fill-current text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-        </div>
-      </div>
-
 
       <div className="mb-6">
         <label

@@ -1,4 +1,10 @@
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
+//import toast from "../../../components/Toast";
+//import * as React from "react";
+import React from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import {
   EditReviewForm,
   EditReviewFormData
@@ -35,19 +41,34 @@ export default function EditReviewPage({
   review
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const router = useRouter();
+
+  /*const notify = React.useCallback((type, message) => {
+    toast({ type, message });
+  }, []);
+
+  const dismiss = React.useCallback(() => {
+    toast.dismiss();
+  }, []);*/
+
+  const notify = (msg) => toast(msg);
+
   function handleSubmit(data: EditReviewFormData) {
     try {
       sendData(review.id, data);
-      alert("Review updated successfully!");
+      //alert("Review updated successfully!");
+      notify("Avaliação atualizada com sucesso!");
       router.replace(`/reviews/${review.id}`);
     } catch (error) {
-      alert("Something went wrong :/");
+      //alert("Something went wrong :/");
+      notify("Algo deu errado! Não foi possível atualizar a avaliação.");
     }
   }
 
   return (
-    <section className="m-4">
-      <EditReviewForm onSubmit={handleSubmit} review={review} reset={false} />
-    </section>
+      <>
+        <section className="m-4">
+          <EditReviewForm onSubmit={handleSubmit} review={review} reset={false} />
+        </section>
+      </>
   );
 }
