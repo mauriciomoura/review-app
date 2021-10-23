@@ -15,7 +15,7 @@ type Props = {
 
 const EditReviewForm: React.FC<Props> = ({ onSubmit, review, reset }) => {
   const [title, setTitle] = useState(review?.title || "");
-  const [rating, setRating] = useState(review?.rating || "");
+  const [rating, setRating] = useState(review?.rating || 0);
   const [description, setDescription] = useState(review?.description || "");
   function doReset() {
     setTitle("");
@@ -63,7 +63,7 @@ const EditReviewForm: React.FC<Props> = ({ onSubmit, review, reset }) => {
       <div className="flex justify-center">
         <ReactStars
           count={5}
-          value={review.rating/2}
+          value={rating/2}
           isHalf={true}
           onChange={ratingChanged}
           size={24}
