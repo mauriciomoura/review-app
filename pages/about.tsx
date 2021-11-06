@@ -17,7 +17,7 @@ export default function About({
 
     return (
       <InstagramFeed 
-      token="IGQVJYX0U4aE1RUTVzX3Vvd0hCOXpuSUhlWHJ3S3FEcUJzNUs4VlNvYWxmbldVLXA0OGJrQU9OWDFKLVRXZAXp1RW5CUkpkbTRrVHpISFNoS21jUl9WNWQtM09QRkdNaUVqS0JjcTlaR1ZAaMm5lYUlKdwZDZD"  
-      counter="12"/>  
+      token="IGQVJVa01mZADNaVEFDWHRqRWowc29yUnFHYUVVTjEzWXBsVXZA4T1lZAQzg2T1RiYUluVGxRLTMwWnVHbXZAfSWdBYUx2aEtuUkszX29jeTRLLU1rNmpPcW9fRUtGLW43V211VThLLVNOTFpmOFh1bG5weQZDZD"  
+      counter="12"/>           
     );
 }
